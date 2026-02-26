@@ -1,4 +1,4 @@
-import { createElement, useRef } from "react";
+import { createElement, useRef, useState } from "react";
 import { content } from "../Content";
 import emailjs from "@emailjs/browser";
 import toast, { Toaster } from "react-hot-toast";
@@ -6,88 +6,112 @@ import toast, { Toaster } from "react-hot-toast";
 const Contact = () => {
   const { Contact } = content;
   const form = useRef();
+  const [isSending, setIsSending] = useState(false);
 
   // Sending Email
   const sendEmail = (e) => {
     e.preventDefault();
+    setIsSending(true);
 
     emailjs
       .sendForm(
-      'YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', form.current, 'YOUR_PUBLIC_KEY'
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        form.current,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       )
       .then(
-        (result) => {
-          console.log(result.text);
-          // Clear all input field values
+        () => {
           form.current.reset();
-          // Success toast message
-          toast.success("Email send Successfully");
+          toast.success("Email envoyé avec succès !");
         },
         (error) => {
-          console.log(error.text);
-          toast.error(error.text);
+          console.error("EmailJS error:", error);
+          toast.error("Une erreur est survenue. Veuillez réessayer.");
         }
-      );
+      )
+      .finally(() => {
+        setIsSending(false);
+      });
   };
 
   return (
     <section className="bg-dark_primary text-white" id="contact">
-      <Toaster />
+      <Toaster position="top-right" />
       <div className="md:container px-5 py-14">
         <h2 className="title !text-white" data-aos="fade-down">
           {Contact.title}
         </h2>
-        <h4 className="subtitle" data-aos="fade-down">
-          {Contact.subtitle}
-        </h4>
+
         <br />
+
         <div className="flex gap-10 md:flex-row flex-col">
+          {/* Formulaire */}
           <form
             ref={form}
             onSubmit={sendEmail}
+            noValidate
             data-aos="fade-up"
             className="flex-1 flex flex-col gap-5"
           >
-            {/* Input Name as same as email js templates values */}
             <input
               type="text"
               name="from_name"
               placeholder="Nom"
               required
-              className="border border-slate-600 p-3 rounded"
+              minLength={2}
+              maxLength={100}
+              autoComplete="name"
+              className="border border-slate-600 p-3 rounded w-full"
             />
             <input
               type="email"
               name="user_email"
-              pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$"
               placeholder="Email"
               required
-              className="border border-slate-600 p-3 rounded"
+              autoComplete="email"
+              className="border border-slate-600 p-3 rounded w-full"
             />
             <textarea
               name="message"
               placeholder="Message"
-              className="border border-slate-600 p-3 rounded h-44"
               required
-            ></textarea>
+              minLength={10}
+              maxLength={2000}
+              className="border border-slate-600 p-3 rounded h-44 w-full resize-none"
+            />
             <button
-              className="btn self-start
-            bg-white text-dark_primary"
+              type="submit"
+              disabled={isSending}
+              className={`btn self-start bg-white text-dark_primary transition-opacity ${
+                isSending ? "opacity-50 cursor-not-allowed" : "hover:opacity-90"
+              }`}
             >
-              Envoi
+              {isSending ? "Envoi en cours..." : "Envoyer"}
             </button>
           </form>
-          <div className="flex-1 flex flex-col gap-5">
-            {Contact.social_media.map((content, i) => (
+
+          {/* Liens sociaux */}
+          <div className="flex-1 flex flex-col gap-5 justify-center">
+            {Contact.social_media.map((item, i) => (
               <div
                 key={i}
                 data-aos="fade-down"
                 data-aos-delay={i * 430}
-                className="flex items-center gap-2"
+                className="flex items-center gap-3"
               >
-                <h4 className="text-white">{createElement(content.icon)}</h4>
-                <a className="font-Poppins" href={content.link} target="_blank">
-                  {content.text}
+                {/* Icône accessible */}
+                <span className="text-2xl text-white" aria-hidden="true">
+                  {createElement(item.icon)}
+                </span>
+                <a
+                  className="font-Poppins text-slate-200 hover:text-white underline underline-offset-2 transition-colors break-all"
+                  href={item.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Contacter via ${item.text}`}
+                >
+                  {item.text}
                 </a>
               </div>
             ))}

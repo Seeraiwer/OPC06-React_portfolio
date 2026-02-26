@@ -28,6 +28,11 @@
     @apply font-Poppins text-4xl md:text-6xl font-extrabold;
   }
 
+  h1.hero-rotated {
+    font-size: clamp(3.5rem, 5vw, 3.75rem) !important;
+    white-space: nowrap !important;
+  }
+
   h2 {
     @apply font-Inria text-5xl font-bold;
   }
