@@ -1,15 +1,12 @@
 ![screen](/src/assets/images/Readme/screen.png)
 
-# React Portfolio 2
-### Vite + React + tailwind
+# Portfolio React — Guide pour débutants
 
-![screen](/src/assets/images/Readme/screen.png)
+Petit portfolio construit avec Vite, React et TailwindCSS — conçu pour être facile à personnaliser.
 
-# React Portfolio 2
-Vite + React + TailwindCSS
-
-## Description
-Petit portfolio construit avec Vite, React et TailwindCSS. Inclut un formulaire de contact utilisant EmailJS, des animations AOS et un carrousel Swiper.
+## Qu'est-ce que ce projet ?
+- Site portfolio statique avec sections standards (Hero, Services, Projets, Contact).
+- Formulaire de contact basé sur EmailJS, animations AOS et carrousel Swiper.
 
 ## Prérequis
 - Node.js (version 16+ recommandée)
@@ -51,13 +48,11 @@ Ouvrez ensuite l'adresse indiquée par Vite (généralement http://localhost:517
 
 Remarque : ces variables sont exposées côté client (préfixées `VITE_`). N'y stockez pas de secrets sensibles.
 
-## Remarques
-- Exemple d'utilisation d'EmailJS : les identifiants sont lus depuis `import.meta.env`.
-- Si vous souhaitez une revue de dépendances (mises à jour / vulnérabilités), je peux vérifier les versions et proposer des mises à jour.
+## Commandes utiles
+- `npm run dev` — développement
+- `npm run build` — build de production (dossier `dist`)
+- `npm run preview` — prévisualiser le build localement
 
----
-
-Merci d'avoir utilisé ce projet — dites-moi si vous voulez que j'ajoute des badges, tests ou CI.
-
-
-
+```bash
+npm run build
+```
