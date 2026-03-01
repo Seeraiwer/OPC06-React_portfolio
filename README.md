@@ -1,6 +1,6 @@
 ![screen](/src/assets/images/Readme/screen.png)
 
-# Portfolio React — Guide pour débutants
+# Portfolio React
 
 Petit portfolio construit avec Vite, React et TailwindCSS — conçu pour être facile à personnaliser.
 
