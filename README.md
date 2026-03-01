@@ -1,11 +1,6 @@
 ![screen](/src/assets/images/Readme/screen.png)
 
 # React Portfolio 2
-### Vite + React + tailwind
-
-![screen](/src/assets/images/Readme/screen.png)
-
-# React Portfolio 2
 Vite + React + TailwindCSS
 
 ## Description
@@ -73,6 +68,7 @@ Remarque : seules les variables préfixées par `VITE_` sont embarquées côté 
 ---
 
 Merci d'avoir utilisé ce projet — dites-moi si vous voulez que j'ajoute des badges, tests ou CI.
+
 
 
 
