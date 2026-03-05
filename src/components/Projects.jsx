@@ -41,14 +41,19 @@ const Projects = () => {
             {projects.project_content.map((item, i) => (
               <SwiperSlide
                 key={i}
-                className="bg-white rounded-3xl p-5 border-b-8 border-[#FAF9FD] h-fit"
+                className="bg-dark_primary rounded-3xl p-5 border-b-8 border-dark_primary h-fit"
               >
                 <img src={item.image} alt={item.title} className="w-full rounded-xl" />
                 <div className="flex flex-col gap-1 mt-2">
                   <h5 className="font-bold font-Poppins">{item.title}</h5>
-                  <button className="font-bold text-gray self-end">
-                    READ MORE
-                  </button>
+                  <a
+                    href={item.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-bold text-gray self-end hover:text-accent transition"
+                  >
+                    GitHub →
+                  </a>
                 </div>
               </SwiperSlide>
             ))}

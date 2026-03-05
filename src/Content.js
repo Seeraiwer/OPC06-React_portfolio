@@ -125,16 +125,19 @@ export const content = {
     image: person_project,
     project_content: [
       {
-        title: "Gym Website",
+        title: "Site Bookie",
         image: project1,
+        github: "https://github.com/Seeraiwer/OPC01-Bookie",
       },
       {
-        title: "Social Media web",
+        title: "Application de location immobilière",
         image: project2,
+        github: "https://github.com/Seeraiwer/OPC04-Kasa",
       },
       {
-        title: "Creative Website",
+        title: "Portfolie Architecte",
         image: project3,
+        github: "https://github.com/Seeraiwer/OPC02-Portfolio-architecte",
       },
     ],
   },
