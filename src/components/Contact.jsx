@@ -18,7 +18,8 @@ const Contact = () => {
     const { from_name, user_email, message } = formData;
     const subject = encodeURIComponent(`Message de ${from_name}`);
     const body = encodeURIComponent(`De : ${from_name}\nEmail : ${user_email}\n\n${message}`);
-    window.location.href = `mailto:?subject=${subject}&body=${body}`;
+    // Contact.social_media[0].text contient l'adresse email définie dans Content.js
+    window.location.href = `mailto:${Contact.social_media[0].text}?subject=${subject}&body=${body}`;
   };
 
   return (
