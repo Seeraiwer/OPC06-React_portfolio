@@ -1,43 +1,24 @@
-import { createElement, useRef, useState } from "react";
+import { createElement, useState } from "react";
 import { content } from "../Content";
-import emailjs from "@emailjs/browser";
-import toast, { Toaster } from "react-hot-toast";
 
 const Contact = () => {
   const { Contact } = content;
-  const form = useRef();
-  const [isSending, setIsSending] = useState(false);
+  const [formData, setFormData] = useState({ from_name: "", user_email: "", message: "" });
 
-  // Sending Email
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
   const sendEmail = (e) => {
     e.preventDefault();
-    setIsSending(true);
-
-    emailjs
-      .sendForm(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-        form.current,
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-      )
-      .then(
-        () => {
-          form.current.reset();
-          toast.success("Email envoyé avec succès !");
-        },
-        (error) => {
-          console.error("EmailJS error:", error);
-          toast.error("Une erreur est survenue. Veuillez réessayer.");
-        }
-      )
-      .finally(() => {
-        setIsSending(false);
-      });
+    const { from_name, user_email, message } = formData;
+    const subject = encodeURIComponent(`Message de ${from_name}`);
+    const body = encodeURIComponent(`De : ${from_name}\nEmail : ${user_email}\n\n${message}`);
+    window.location.href = `mailto:?subject=${subject}&body=${body}`;
   };
 
   return (
     <section className="bg-dark_primary text-white" id="contact">
-      <Toaster position="top-right" />
       <div className="md:container px-5 py-14">
         <h2 className="title !text-white" data-aos="fade-down">
           {Contact.title}
@@ -48,7 +29,6 @@ const Contact = () => {
         <div className="flex gap-10 md:flex-row flex-col">
           {/* Formulaire */}
           <form
-            ref={form}
             onSubmit={sendEmail}
             noValidate
             data-aos="fade-up"
@@ -62,6 +42,8 @@ const Contact = () => {
               minLength={2}
               maxLength={100}
               autoComplete="name"
+              value={formData.from_name}
+              onChange={handleChange}
               className="border border-slate-600 p-3 rounded w-full"
             />
             <input
@@ -70,6 +52,8 @@ const Contact = () => {
               placeholder="Email"
               required
               autoComplete="email"
+              value={formData.user_email}
+              onChange={handleChange}
               className="border border-slate-600 p-3 rounded w-full"
             />
             <textarea
@@ -78,16 +62,15 @@ const Contact = () => {
               required
               minLength={10}
               maxLength={2000}
+              value={formData.message}
+              onChange={handleChange}
               className="border border-slate-600 p-3 rounded h-44 w-full resize-none"
             />
             <button
               type="submit"
-              disabled={isSending}
-              className={`btn self-start bg-white text-dark_primary transition-opacity ${
-                isSending ? "opacity-50 cursor-not-allowed" : "hover:opacity-90"
-              }`}
+              className="btn self-start bg-white text-dark_primary transition-opacity hover:opacity-90"
             >
-              {isSending ? "Envoi en cours..." : "Envoyer"}
+              Envoyer
             </button>
           </form>
 
