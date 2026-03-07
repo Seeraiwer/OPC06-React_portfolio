@@ -5,6 +5,8 @@ import { createElement } from "react";
 
 const Navbar = () => {
   const { nav } = content;
+  // showMenu : contrôle l'affichage du menu hamburger (visible/caché)
+  // active : mémorise l'index du lien de navigation actuellement sélectionné
   const [showMenu, setShowMenu] = useState(false);
   const [active, setActive] = useState(0);
 
@@ -12,6 +14,7 @@ const Navbar = () => {
     <div className="w-full flex justify-center">
       {/* Bouton hamburger */}
       <button
+        // aria-label et aria-expanded : attributs d'accessibilité WCAG pour les lecteurs d'écran
         aria-label={showMenu ? "Fermer le menu" : "Ouvrir le menu"}
         aria-expanded={showMenu}
         className="sm:cursor-pointer fixed top-10 left-10 z-[999] rounded-lg bg-white/40 p-2"
@@ -44,7 +47,8 @@ const Navbar = () => {
               i === active ? "bg-dark_primary text-white" : "hover:bg-slate-300"
             }`}
           >
-            {createElement(item.icon)}
+            {}
+          {createElement(item.icon)}
           </a>
         ))}
       </nav>

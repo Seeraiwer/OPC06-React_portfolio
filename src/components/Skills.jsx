@@ -17,10 +17,13 @@ const customStyles = {
     padding: "2rem",
   },
 };
+// setAppElement : obligatoire pour l'accessibilité — indique au lecteur d'écran quel élément masquer quand la modale est ouverte
 Modal.setAppElement("#root");
 
 const Skills = () => {
   const { skills } = content;
+  // modalIsOpen : booléen qui contrôle l'affichage de la modale
+  // selectSkill : stocke la compétence cliquée pour afficher ses détails dans la modale
   const [modalIsOpen, setIsOpen] = useState(false);
   const [selectSkill, setSelectSkill] = useState(null);
 

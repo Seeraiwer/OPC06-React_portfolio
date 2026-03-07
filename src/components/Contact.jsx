@@ -9,6 +9,10 @@ const Contact = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  // Formulaire contrôlé : chaque champ est lié à l'état React via value + onChange
+  // Au submit, on construit une URL mailto: pour ouvrir le client mail natif de l'utilisateur
+  // encodeURIComponent : encode les caractères spéciaux (accents, retours à la ligne) pour ne pas casser l'URL
+  // Limite de cette approche : nécessite un client mail configuré sur l'appareil de l'utilisateur
   const sendEmail = (e) => {
     e.preventDefault();
     const { from_name, user_email, message } = formData;

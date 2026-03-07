@@ -12,6 +12,7 @@ import Aos from "aos";
 import "aos/dist/aos.css";
 
 const App = () => {
+  // disable: "mobile" → animations désactivées sur mobile pour des raisons de performance et d'UX
   useEffect(() => {
     Aos.init({
       duration: 1800,
@@ -30,7 +31,7 @@ const App = () => {
       <Contact />
       <footer className="p-3 text-center">
         <h6 className="mb-3">SEERAIWER</h6>
-        <p>Fork codeaprogram © All CopyRights Reserved 2022</p>
+        <p>Fork <a href="https://github.com/Sridhar-C-25/react_portfolio_2" target="_blank" rel="noopener noreferrer" className="underline hover:opacity-75">Sridhar-C-25/react_portfolio_2</a> © All CopyRights Reserved 2022</p>
       </footer>
     </div>
   );

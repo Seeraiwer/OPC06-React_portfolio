@@ -1,3 +1,7 @@
+// Centralisation de toutes les données : textes, images et icônes dans un seul fichier
+// Principe de séparation des responsabilités : modifier le contenu sans toucher à la logique des composants
+// Les composants importent ce fichier et ne font que lire les données — ils ne les définissent pas
+
 // import images
 import Hero_person from "./assets/images/Hero/person.png";
 
