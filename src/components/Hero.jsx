@@ -15,9 +15,9 @@ const Hero = () => {
             src={hero.image}
             alt={`${hero.firstName} ${hero.LastName}`}
             className="absolute inset-0 h-full object-cover object-top"
-            style={{ width: "calc(100% - 3rem)" }}
+            style={{ width: "calc(100% - 1.5rem)" }}
           />
-          <div className="absolute top-0 right-0 bottom-0 w-12 bg-primaryLinear flex items-center justify-center">
+          <div className="absolute top-0 right-0 bottom-0 w-6 bg-primaryLinear flex items-center justify-center">
             <span
               className="text-[#EAF2FA] font-bold font-Poppins text-sm whitespace-nowrap tracking-widest select-none"
               style={{ writingMode: "vertical-rl" }}
