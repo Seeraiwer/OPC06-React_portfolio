@@ -56,15 +56,18 @@ const Hero = () => {
       <div className="hidden md:block">
         <div className="md:min-h-screen relative flex md:flex-row md:items-end justify-center">
 
-          {/* Fond décoratif + texte rotatif */}
+          {/* Fond décoratif */}
           <div
             data-aos="slide-left"
             data-aos-delay="1200"
-            className="absolute h-full md:w-4/12 top-0 right-0 bg-primaryLinear bottom-0 -z-10 overflow-hidden"
-          >
-            <h1 className="hero-rotated rotate-90 absolute top-[30%] right-[-15%] text-[#EAF2FA]">
+            className="absolute h-full md:w-4/12 top-0 right-0 bg-primaryLinear bottom-0 -z-10"
+          />
+
+          {/* Titre rotatif — séparé du fond pour éviter le problème de stacking context */}
+          <div className="absolute h-full md:w-4/12 top-0 right-0 bottom-0 z-10 flex items-center justify-center pointer-events-none select-none">
+            <h1 className="hero-rotated rotate-90 text-[#EAF2FA]">
               {hero.firstName}{" "}
-              <span className="text-dark_primary">{hero.LastName}</span>
+              <span className="text-accent">{hero.LastName}</span>
             </h1>
           </div>
 
