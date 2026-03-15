@@ -16,7 +16,7 @@ const Hero = () => {
 
         {/* Texte rotatif — sorti du -z-10 pour rester visible */}
         <h1
-          className="hero-rotated rotate-90 absolute top-[30%] right-0 text-[#EAF2FA] pointer-events-none select-none"
+          className="hero-rotated rotate-90 absolute top-[30%] right-0 text-[#EAF2FA] pointer-events-none select-none z-10"
         >
           {hero.firstName}{" "}
           <span className="text-dark_primary">{hero.LastName}</span>
