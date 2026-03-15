@@ -20,13 +20,13 @@ const Hero = () => {
           </div>
           {/* Bandeau bleu avec texte vertical natif */}
           <div className="w-16 bg-primaryLinear flex items-center justify-center flex-shrink-0">
-            <h1
-              className="text-[#EAF2FA] font-extrabold font-Poppins text-xl tracking-widest select-none"
+            <div
+              className="text-[#EAF2FA] font-extrabold font-Poppins text-base tracking-[0.15em] whitespace-nowrap select-none"
               style={{ writingMode: "vertical-rl" }}
             >
               {hero.firstName}
               <span className="text-dark_primary"> {hero.LastName}</span>
-            </h1>
+            </div>
           </div>
         </div>
 
