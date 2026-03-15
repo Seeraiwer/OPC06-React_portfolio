@@ -11,18 +11,20 @@ const Hero = () => {
 
         {/* Zone visuelle : image + bandeau côte à côte, zéro superposition */}
         <div className="flex h-80 overflow-hidden">
-          <img
-            src={hero.image}
-            alt={`${hero.firstName} ${hero.LastName}`}
-            className="flex-1 min-w-0 h-full object-cover object-top"
-          />
+          <div className="flex-1 overflow-hidden">
+            <img
+              src={hero.image}
+              alt={`${hero.firstName} ${hero.LastName}`}
+              className="w-full h-full object-cover object-top"
+            />
+          </div>
           <div className="w-12 flex-shrink-0 bg-primaryLinear flex items-center justify-center">
             <span
               className="text-[#EAF2FA] font-bold font-Poppins text-sm whitespace-nowrap tracking-widest select-none"
               style={{ writingMode: "vertical-rl" }}
             >
-              {hero.firstName}
-              <span className="text-dark_primary"> {hero.LastName}</span>
+              {hero.firstName}{" "}
+              <span className="text-accent"> {hero.LastName}</span>
             </span>
           </div>
         </div>
