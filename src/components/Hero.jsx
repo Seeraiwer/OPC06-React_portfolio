@@ -9,16 +9,16 @@ const Hero = () => {
       {/* ======== LAYOUT MOBILE (caché sur md+) ======== */}
       <div className="md:hidden flex flex-col">
 
-        {/* Zone visuelle : image + bandeau collé au bord droit */}
-        <div className="relative h-96">
+        {/* Zone visuelle : image + bandeau côte à côte, zéro superposition */}
+        <div className="flex h-80 overflow-hidden">
           <img
             src={hero.image}
             alt={`${hero.firstName} ${hero.LastName}`}
-            className="h-full w-full object-cover object-top"
+            className="flex-1 min-w-0 h-full object-cover object-top"
           />
-          <div className="absolute inset-y-0 right-0 w-12 bg-primaryLinear flex items-center justify-center">
+          <div className="w-12 flex-shrink-0 bg-primaryLinear flex items-center justify-center">
             <span
-              className="text-[#EAF2FA] font-extrabold font-Poppins text-sm whitespace-nowrap tracking-[0.2em] select-none"
+              className="text-[#EAF2FA] font-bold font-Poppins text-sm whitespace-nowrap tracking-widest select-none"
               style={{ writingMode: "vertical-rl" }}
             >
               {hero.firstName}
