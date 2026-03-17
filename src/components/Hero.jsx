@@ -9,13 +9,12 @@ const Hero = () => {
       {/* ======== LAYOUT MOBILE (caché sur md+) ======== */}
       <div className="md:hidden flex flex-col">
 
-        {/* Zone visuelle : image + bandeau — positionnement absolu garanti */}
-        <div className="relative h-80 overflow-hidden">
+        {/* Zone visuelle : image + bandeau */}
+        <div className="relative flex">
           <img
             src={hero.image}
             alt={`${hero.firstName} ${hero.LastName}`}
-            className="absolute inset-0 h-full object-cover object-top"
-            style={{ width: "calc(100% - 1.5rem)" }}
+            className="w-full object-contain object-top"
           />
           <div className="absolute top-0 right-0 bottom-0 w-6 bg-primaryLinear flex items-center justify-center">
             <span
